@@ -1,0 +1,279 @@
+:root {
+  --bg: #f6f8f7;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-strong: #ffffff;
+  --text: #102217;
+  --muted: #4d6457;
+  --line: rgba(16, 34, 23, 0.08);
+  --brand: #13ec6a;
+  --brand-dark: #0eb550;
+  --shadow: 0 24px 60px rgba(16, 34, 23, 0.08);
+  --radius: 24px;
+  --content-width: 980px;
+  --font-body: "Plus Jakarta Sans", "Inter", "Segoe UI", sans-serif;
+  --font-heading: "Lexend", "Plus Jakarta Sans", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(circle at top left, rgba(19, 236, 106, 0.22), transparent 30%),
+    linear-gradient(180deg, #fbfcfb 0%, var(--bg) 100%);
+}
+
+a {
+  color: inherit;
+}
+
+.page-shell {
+  width: min(calc(100% - 32px), var(--content-width));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero,
+.panel,
+.policy article {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 40px;
+  border-radius: calc(var(--radius) + 8px);
+  animation: rise 0.45s ease-out both;
+}
+
+.hero-compact {
+  padding-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-dark);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  line-height: 1.05;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: 1.02rem;
+  margin-bottom: 10px;
+}
+
+.lede,
+.panel p,
+.policy p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.lede {
+  max-width: 640px;
+  margin-top: 16px;
+  font-size: 1.1rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--brand);
+  color: #07210f;
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--brand-dark);
+  color: #ffffff;
+}
+
+.button-secondary {
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+}
+
+main {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.panel {
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.info-grid,
+.faq-list {
+  display: grid;
+  gap: 16px;
+}
+
+.info-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.info-grid article,
+.faq-list article {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(16, 34, 23, 0.06);
+}
+
+.faq-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.panel-inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+}
+
+.legal-copy {
+  text-align: right;
+}
+
+.legal-copy p + p {
+  margin-top: 8px;
+}
+
+.policy {
+  display: grid;
+  gap: 16px;
+}
+
+.policy article {
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.policy article p + p {
+  margin-top: 12px;
+}
+
+a:not(.button) {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+a:not(.button):hover,
+a:not(.button):focus-visible {
+  color: var(--brand-dark);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 860px) {
+  .info-grid,
+  .faq-list {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-inline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .legal-copy {
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(calc(100% - 20px), var(--content-width));
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .hero,
+  .panel,
+  .policy article {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
